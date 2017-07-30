@@ -43,9 +43,9 @@ func Token(u LoggedUser) string {
 // Authenticate user
 func Authenticate(email, password string) (user LoggedUser, err error) {
 	users := make([]LoggedUser, 0)
-	sqlQuery := `SELECT u.id, u.cpf as login, p.id 
+	sqlQuery := `SELECT u.id, u.cpf_cnpj as login, p.id 
 	 FROM users u  JOIN profile p ON (u.id = p.user_id)
-	 WHERE u.cpf = $1 AND
+	 WHERE u.cpf_cnpj = $1 AND
 	 u.password = $2 LIMIT 1`
 	jsonData, err := postgres.Query(sqlQuery, email, hashPassword(password))
 	if err != nil {
