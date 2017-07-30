@@ -19,9 +19,9 @@ type ImunizemeClaims struct {
 
 // LoggedUser representation
 type LoggedUser struct {
-	ID   int    `json:"id,omitempty"`
-	Name string `json:"name,omitempty"`
-	CPF  string `json:"cpf,omitempty"`
+	ID        int    `json:"id,omitempty"`
+	Login     string `json:"login,omitempty"`
+	ProfileID int    `json:"profile_id,omitempty"`
 }
 
 // Token for user
@@ -43,8 +43,8 @@ func Token(u LoggedUser) string {
 // Authenticate user
 func Authenticate(email, password string) (user LoggedUser, err error) {
 	users := make([]LoggedUser, 0)
-	sqlQuery := `SELECT u.id, u.name, u.cpf  
-	 FROM users u 
+	sqlQuery := `SELECT u.id, u.cpf as login, p.id 
+	 FROM users u  JOIN profile p ON (u.id = p.user_id)
 	 WHERE u.cpf = $1 AND
 	 u.password = $2 LIMIT 1`
 	jsonData, err := postgres.Query(sqlQuery, email, hashPassword(password))
