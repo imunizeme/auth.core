@@ -3,13 +3,12 @@ package auth
 import (
 	"crypto/sha1"
 	"encoding/hex"
-	"encoding/json"
 	"strconv"
 	"time"
 
 	jwt "github.com/dgrijalva/jwt-go"
 	"github.com/imunizeme/config.core"
-	"github.com/nuveo/prest/adapters/postgres"
+	"github.com/prest/adapters/postgres"
 )
 
 // ImunizemeClaims JWT
@@ -42,21 +41,15 @@ func Token(u LoggedUser) string {
 
 // Authenticate user
 func Authenticate(email, password string) (user LoggedUser, err error) {
-	users := make([]LoggedUser, 0)
 	sqlQuery := `SELECT u.id, u.cpf_cnpj as login, p.id as profile_id
 	 FROM users u  JOIN profile p ON (u.id = p.user_id)
 	 WHERE u.cpf_cnpj = $1 AND
 	 u.password = $2 LIMIT 1`
-	jsonData, err := postgres.Query(sqlQuery, email, hashPassword(password))
-	if err != nil {
+	sc := postgres.Query(sqlQuery, email, hashPassword(password))
+	if sc.Err() != nil {
 		return
 	}
-	if err = json.Unmarshal(jsonData, &users); err != nil {
-		return
-	}
-	if len(users) > 0 {
-		user = users[0]
-	}
+	err = sc.Scan(&user)
 	return
 }
 
