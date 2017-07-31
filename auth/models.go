@@ -43,7 +43,7 @@ func Token(u LoggedUser) string {
 // Authenticate user
 func Authenticate(email, password string) (user LoggedUser, err error) {
 	users := make([]LoggedUser, 0)
-	sqlQuery := `SELECT u.id, u.cpf_cnpj as login, p.id 
+	sqlQuery := `SELECT u.id, u.cpf_cnpj as login, p.id as profile_id
 	 FROM users u  JOIN profile p ON (u.id = p.user_id)
 	 WHERE u.cpf_cnpj = $1 AND
 	 u.password = $2 LIMIT 1`
