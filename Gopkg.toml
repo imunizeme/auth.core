@@ -35,7 +35,7 @@
 
 [[constraint]]
   branch = "master"
-  name = "github.com/nuveo/logSys"
+  name = "github.com/nuveo/log"
 
 [[constraint]]
   branch = "master"

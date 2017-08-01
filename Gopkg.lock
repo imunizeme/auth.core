@@ -77,13 +77,7 @@
   branch = "master"
   name = "github.com/nuveo/log"
   packages = ["."]
-  revision = "3eef99fee9cf6970feec6e8bcd70af570fb6f5e5"
-
-[[projects]]
-  branch = "master"
-  name = "github.com/nuveo/logSys"
-  packages = ["."]
-  revision = "3eef99fee9cf6970feec6e8bcd70af570fb6f5e5"
+  revision = "9ca5c896c5269c0940c01c268a8eabd057767a85"
 
 [[projects]]
   name = "github.com/pelletier/go-buffruneio"
@@ -178,6 +172,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "d5536c56910c09432528ce6319e16d839792d937076058287de216a75696ad8b"
+  inputs-digest = "0c6e1ce0b9050ff7f22515d5f70b810da1b21795afaa1b2e87a7062f901c04fc"
   solver-name = "gps-cdcl"
   solver-version = 1

@@ -1,4 +1,4 @@
-version: "2"
+version: "3"
 services:
     auth:
         build: .
@@ -7,8 +7,8 @@ services:
             - IMUNIZEME_PG_USER=postgres
             - IMUNIZEME_PG_DBNAME=imunizeme
             - IMUNIZEME_PG_PORT=5432
-            - IMUNIZEME_AUTH_HTTP_PORT=4000
-            - IMUNIZEME_AUTH_HTTP_HOST=0.0.0.0
+            - IMUNIZEME_AUTH_PORT=4000
+            - IMUNIZEME_AUTH_HOST=0.0.0.0
             - IMUNIZEME_JWT_KEY=51d7fe292d4883dd6e408542denver
         ports:
             - "4000:4000"

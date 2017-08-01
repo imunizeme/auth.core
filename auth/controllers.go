@@ -17,7 +17,7 @@ const unf = "User not found"
 func Auth(w http.ResponseWriter, r *http.Request) {
 	email, password, ok := r.BasicAuth()
 	if !ok {
-		http.Error(w, unf, http.StatusNotFound)
+		http.Error(w, unf, http.StatusInternalServerError)
 		return
 	}
 	loggedUser, err := Authenticate(email, password)

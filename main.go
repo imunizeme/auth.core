@@ -6,7 +6,7 @@ import (
 	"github.com/gorilla/mux"
 	"github.com/imunizeme/auth.core/auth"
 	config "github.com/imunizeme/config.core"
-	log "github.com/nuveo/logSys"
+	"github.com/nuveo/log"
 	"github.com/urfave/negroni"
 )
 
