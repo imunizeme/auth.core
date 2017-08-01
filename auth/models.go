@@ -42,7 +42,7 @@ func Token(u LoggedUser) string {
 // Authenticate user
 func Authenticate(email, password string) (user LoggedUser, err error) {
 	sqlQuery := `SELECT u.id, u.cpf_cnpj as login, p.id as profile_id
-	 FROM users u LEFT JOIN profile p ON (u.id = p.user_id)
+	 FROM users u JOIN profile p ON (u.id = p.user_id)
 	 WHERE u.cpf_cnpj = $1 AND
 	 u.password = $2 LIMIT 1`
 	sc := postgres.Query(sqlQuery, email, hashPassword(password))
