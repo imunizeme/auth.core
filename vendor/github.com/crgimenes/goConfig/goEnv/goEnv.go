@@ -1,4 +1,4 @@
-package goEnv
+package goenv
 
 import (
 	"fmt"
@@ -8,7 +8,7 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/crgimenes/goConfig/structTag"
+	"github.com/crgimenes/goconfig/structtag"
 )
 
 // Prefix is a string that would be placed at the beginning of the generated tags.
@@ -21,30 +21,30 @@ var Usage func()
 func Setup(tag string, tagDefault string) {
 	Usage = DefaultUsage
 
-	structTag.Setup()
-	structTag.Prefix = Prefix
+	structtag.Setup()
+	structtag.Prefix = Prefix
 	SetTag(tag)
 	SetTagDefault(tagDefault)
 
-	structTag.ParseMap[reflect.Int] = reflectInt
-	structTag.ParseMap[reflect.Float64] = reflectFloat
-	structTag.ParseMap[reflect.String] = reflectString
-	structTag.ParseMap[reflect.Bool] = reflectBool
+	structtag.ParseMap[reflect.Int] = reflectInt
+	structtag.ParseMap[reflect.Float64] = reflectFloat
+	structtag.ParseMap[reflect.String] = reflectString
+	structtag.ParseMap[reflect.Bool] = reflectBool
 }
 
 // SetTag set a new tag
 func SetTag(tag string) {
-	structTag.Tag = tag
+	structtag.Tag = tag
 }
 
 // SetTagDefault set a new TagDefault to retorn default values
 func SetTagDefault(tag string) {
-	structTag.TagDefault = tag
+	structtag.TagDefault = tag
 }
 
 // Parse configuration
 func Parse(config interface{}) (err error) {
-	err = structTag.Parse(config, "")
+	err = structtag.Parse(config, "")
 	return
 }
 
@@ -53,7 +53,7 @@ var PrintDefaultsOutput string
 
 func getNewValue(field *reflect.StructField, value *reflect.Value, tag string, datatype string) (ret string) {
 
-	defaultValue := field.Tag.Get(structTag.TagDefault)
+	defaultValue := field.Tag.Get(structtag.TagDefault)
 
 	// create PrintDefaults output
 	tag = strings.ToUpper(tag)

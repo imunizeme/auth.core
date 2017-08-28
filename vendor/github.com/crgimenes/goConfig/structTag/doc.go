@@ -1,1 +1,1 @@
-package structTag
+package structtag

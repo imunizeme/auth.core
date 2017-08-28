@@ -9,9 +9,9 @@
 
 [[projects]]
   branch = "master"
-  name = "github.com/crgimenes/goConfig"
-  packages = [".","goEnv","goFlags","structTag","toml"]
-  revision = "b66535246e5f9d917c97cdb75c75749f10893f50"
+  name = "github.com/crgimenes/goconfig"
+  packages = [".","goenv","goflags","structtag","toml"]
+  revision = "95c702640de75e6c04975f8119e8ae45c21635ce"
 
 [[projects]]
   name = "github.com/dgrijalva/jwt-go"
@@ -41,13 +41,13 @@
   branch = "master"
   name = "github.com/hashicorp/hcl"
   packages = [".","hcl/ast","hcl/parser","hcl/scanner","hcl/strconv","hcl/token","json/parser","json/scanner","json/token"]
-  revision = "392dba7d905ed5d04a5794ba89f558b27e2ba1ca"
+  revision = "8f6b1344a92ff8877cf24a5de9177bf7d0a2a187"
 
 [[projects]]
   branch = "master"
   name = "github.com/imunizeme/config.core"
   packages = ["."]
-  revision = "959df137090d66f3372662462cd879fe6c4eb34b"
+  revision = "8aa855d8d1148986b25325318be9626d8a998aae"
 
 [[projects]]
   branch = "master"
@@ -59,7 +59,7 @@
   branch = "master"
   name = "github.com/lib/pq"
   packages = [".","oid"]
-  revision = "dd1fe2071026ce53f36a39112e645b4d4f5793a4"
+  revision = "e42267488fe361b9dc034be7a6bffef5b195bceb"
 
 [[projects]]
   name = "github.com/magiconair/properties"
@@ -77,7 +77,7 @@
   branch = "master"
   name = "github.com/nuveo/log"
   packages = ["."]
-  revision = "9ca5c896c5269c0940c01c268a8eabd057767a85"
+  revision = "cd5a20b3efb2a25d74e8c68e66e4d3fe786c7c34"
 
 [[projects]]
   name = "github.com/pelletier/go-buffruneio"
@@ -95,19 +95,19 @@
   branch = "master"
   name = "github.com/prest/adapters"
   packages = ["postgres","postgres/connection","postgres/internal/scanner"]
-  revision = "557ae5b961e4855d1afde55f0dabcc04b53a8555"
+  revision = "687a9123bfdac4a6cd410328e6edc52b7cf3d5ae"
 
 [[projects]]
   branch = "master"
   name = "github.com/prest/config"
   packages = ["."]
-  revision = "d9878e15eec3f75b1b25c88abca53bf923d2c36c"
+  revision = "23838e7a0cbcd4ef2806934d39592b9ff62a3b27"
 
 [[projects]]
   branch = "master"
   name = "github.com/prest/statements"
   packages = ["."]
-  revision = "cbb29dfbcb6d58105c17701f4bafab4bee9c4d34"
+  revision = "0a7bec557aa6c9c0d8d20a208dccc04f8795dc8e"
 
 [[projects]]
   branch = "master"
@@ -119,7 +119,7 @@
   branch = "master"
   name = "github.com/spf13/afero"
   packages = [".","mem"]
-  revision = "9be650865eab0c12963d8753212f4f9c66cdcf12"
+  revision = "36f8810e2e3d7eeac4ac05b57f65690fbfba62a2"
 
 [[projects]]
   name = "github.com/spf13/cast"
@@ -140,10 +140,10 @@
   version = "v1.0.0"
 
 [[projects]]
-  branch = "master"
   name = "github.com/spf13/viper"
   packages = ["."]
   revision = "25b30aa063fc18e48662b86996252eabdcf2f0c7"
+  version = "v1.0.0"
 
 [[projects]]
   name = "github.com/urfave/negroni"
@@ -155,19 +155,19 @@
   branch = "master"
   name = "golang.org/x/sys"
   packages = ["unix"]
-  revision = "0f826bdd13b500be0f1d4004938ad978fcc6031e"
+  revision = "2d6f6f883a06fc0d5f4b14a81e4c28705ea64c15"
 
 [[projects]]
   branch = "master"
   name = "golang.org/x/text"
   packages = ["internal/gen","internal/triegen","internal/ucd","transform","unicode/cldr","unicode/norm"]
-  revision = "3bd178b88a8180be2df394a1fbb81313916f0e7b"
+  revision = "ac87088df8ef557f1e32cd00ed0b6fbc3f7ddafb"
 
 [[projects]]
   branch = "v2"
   name = "gopkg.in/yaml.v2"
   packages = ["."]
-  revision = "25c4ec802a7d637f88d584ab26798e94ad14c13b"
+  revision = "eb3733d160e74a9c7e442f435eb3bea458e1d19f"
 
 [solve-meta]
   analyzer-name = "dep"

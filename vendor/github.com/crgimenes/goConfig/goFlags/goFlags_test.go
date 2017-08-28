@@ -1,4 +1,4 @@
-package goFlags
+package goflags
 
 import (
 	"os"

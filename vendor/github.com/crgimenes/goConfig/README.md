@@ -1,20 +1,18 @@
-# goConfig
-[![Build Status](https://travis-ci.org/crgimenes/goConfig.svg?branch=master)](https://travis-ci.org/crgimenes/goConfig)
-[![Go Report Card](https://goreportcard.com/badge/github.com/crgimenes/goConfig)](https://goreportcard.com/report/github.com/crgimenes/goConfig)
-[![codecov](https://codecov.io/gh/crgimenes/goConfig/branch/master/graph/badge.svg)](https://codecov.io/gh/crgimenes/goConfig)
-[![GoDoc](https://godoc.org/github.com/crgimenes/goConfig?status.png)](https://godoc.org/github.com/crgimenes/goConfig)
-[![Go project version](https://badge.fury.io/go/github.com%2Fcrgimenes%2FgoConfig.svg)](https://badge.fury.io/go/github.com%2Fcrgimenes%2FgoConfig)
+# goconfig
+[![Build Status](https://travis-ci.org/crgimenes/goconfig.svg?branch=master)](https://travis-ci.org/crgimenes/goconfig)
+[![Go Report Card](https://goreportcard.com/badge/github.com/crgimenes/goconfig)](https://goreportcard.com/report/github.com/crgimenes/goconfig)
+[![codecov](https://codecov.io/gh/crgimenes/goconfig/branch/master/graph/badge.svg)](https://codecov.io/gh/crgimenes/goconfig)
+[![GoDoc](https://godoc.org/github.com/crgimenes/goconfig?status.png)](https://godoc.org/github.com/crgimenes/goconfig)
+[![Go project version](https://badge.fury.io/go/github.com%2Fcrgimenes%2Fgoconfig.svg)](https://badge.fury.io/go/github.com%2Fcrgimenes%2Fgoconfig)
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 
-goConfig uses a struct as input and populates the fields of this struct with parameters fom command line, environment variables and configuration file.
-
-![goConfig simple anda fast config package](http://crg.eti.br/img/goConfig.gif)
+goconfig uses a struct as input and populates the fields of this struct with parameters fom command line, environment variables and configuration file.
 
 ## Install
 
 ```
-go get github.com/crgimenes/goConfig
+go get github.com/crgimenes/goconfig
 ```
 
 ## Example
@@ -22,7 +20,7 @@ go get github.com/crgimenes/goConfig
 ```go
 package main
 
-import "github.com/crgimenes/goConfig"
+import "github.com/crgimenes/goconfig"
 
 /*
 step 1: Declare your configuration struct,
@@ -46,7 +44,7 @@ func main() {
 	config := configTest{}
 
 	// step 3: Pass the instance pointer to the parser
-	err := goConfig.Parse(&config)
+	err := goconfig.Parse(&config)
 	if err != nil {
 		println(err)
 		return

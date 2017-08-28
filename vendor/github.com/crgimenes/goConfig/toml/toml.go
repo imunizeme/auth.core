@@ -5,24 +5,24 @@ import (
 	"os"
 
 	"github.com/BurntSushi/toml"
-	"github.com/crgimenes/goConfig"
+	"github.com/crgimenes/goconfig"
 )
 
 func init() {
-	f := goConfig.Fileformat{
+	f := goconfig.Fileformat{
 		Extension:   ".toml",
 		Save:        SaveTOML,
 		Load:        LoadTOML,
 		PrepareHelp: PrepareHelp,
 	}
-	goConfig.Formats = append(goConfig.Formats, f)
+	goconfig.Formats = append(goconfig.Formats, f)
 }
 
 // LoadTOML config file
 func LoadTOML(config interface{}) (err error) {
-	configFile := goConfig.Path + goConfig.File
+	configFile := goconfig.Path + goconfig.File
 	_, err = os.Stat(configFile)
-	if os.IsNotExist(err) && !goConfig.FileRequired {
+	if os.IsNotExist(err) && !goconfig.FileRequired {
 		err = nil
 		return
 	} else if err != nil {
@@ -35,9 +35,9 @@ func LoadTOML(config interface{}) (err error) {
 
 // SaveTOML config file
 func SaveTOML(config interface{}) (err error) {
-	_, err = os.Stat(goConfig.Path)
+	_, err = os.Stat(goconfig.Path)
 	if os.IsNotExist(err) {
-		err = os.Mkdir(goConfig.Path, os.ModePerm)
+		err = os.Mkdir(goconfig.Path, os.ModePerm)
 		if err != nil {
 			return
 		}
@@ -45,7 +45,7 @@ func SaveTOML(config interface{}) (err error) {
 		return
 	}
 
-	configFile := goConfig.Path + goConfig.File
+	configFile := goconfig.Path + goconfig.File
 
 	_, err = os.Stat(configFile)
 	if err != nil {
@@ -62,7 +62,7 @@ func SaveTOML(config interface{}) (err error) {
 
 // PrepareHelp return help string for this file format.
 func PrepareHelp(config interface{}) (help string, err error) {
-	tmpFile, err := ioutil.TempFile(os.TempDir(), goConfig.File)
+	tmpFile, err := ioutil.TempFile(os.TempDir(), goconfig.File)
 	if err != nil {
 		return
 	}

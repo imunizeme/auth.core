@@ -3,9 +3,9 @@ package config
 import (
 	"strings"
 
-	"github.com/crgimenes/goConfig"
+	"github.com/crgimenes/goconfig"
 	// toml import for goConfig
-	_ "github.com/crgimenes/goConfig/toml"
+	_ "github.com/crgimenes/goconfig/toml"
 	"github.com/nuveo/log"
 	pConf "github.com/prest/config"
 )
@@ -21,6 +21,7 @@ type Config struct {
 	PGUser   string `toml:"pg_user" cfg:"pg_user" cfgDefault:"postgres"`
 	Prest    Prest  `toml:"prest" cfg:"prest"`
 	Auth     Auth   `toml:"auth" cfg:"auth"`
+	Bot      Bot    `toml:"bot" cfg:"bot"`
 }
 
 // Prest config
@@ -37,16 +38,25 @@ type Auth struct {
 	Port int    `toml:"port" cfg:"port" cfgDefault:"4000"`
 }
 
+// Bot config
+type Bot struct {
+	Consumerkey    string `toml:"consumer_key" cfg:"consumer_key"`
+	ConsumerSecret string `toml:"consumer_secret" cfg:"consumer_secret"`
+	AccessToken    string `toml:"access_token" cfg:"access_token"`
+	TokenSecret    string `toml:"token_secret" cfg:"token_secret"`
+	MessageToken   string `toml:"message_token" cfg:"message_token"`
+}
+
 // Get cconfig global var
 var Get *Config
 
 // Load configs
 func Load() (err error) {
-	goConfig.PrefixEnv = "IMUNIZEME"
-	goConfig.File = "config.toml"
+	goconfig.PrefixEnv = "IMUNIZEME"
+	goconfig.File = "config.toml"
 	Get = &Config{}
 
-	err = goConfig.Parse(Get)
+	err = goconfig.Parse(Get)
 	if err != nil {
 		return
 	}

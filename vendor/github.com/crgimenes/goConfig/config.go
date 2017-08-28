@@ -1,15 +1,15 @@
-//Package goConfig uses a struct as input and populates the
+//Package goconfig uses a struct as input and populates the
 //fields of this struct with parameters fom command
 //line, environment variables and configuration file.
-package goConfig
+package goconfig
 
 import (
 	"errors"
 	"fmt"
 	"path"
 
-	"github.com/crgimenes/goConfig/goEnv"
-	"github.com/crgimenes/goConfig/goFlags"
+	"github.com/crgimenes/goconfig/goenv"
+	"github.com/crgimenes/goconfig/goflags"
 )
 
 // Tag to set main name of field
@@ -91,18 +91,18 @@ func Parse(config interface{}) (err error) {
 		}
 	}
 
-	goEnv.Prefix = PrefixEnv
-	goEnv.Setup(Tag, TagDefault)
-	err = goEnv.Parse(config)
+	goenv.Prefix = PrefixEnv
+	goenv.Setup(Tag, TagDefault)
+	err = goenv.Parse(config)
 	if err != nil {
 		return
 	}
 
-	goFlags.Prefix = PrefixFlag
-	goFlags.Setup(Tag, TagDefault)
-	goFlags.Usage = Usage
-	goFlags.Preserve = true
-	err = goFlags.Parse(config)
+	goflags.Prefix = PrefixFlag
+	goflags.Setup(Tag, TagDefault)
+	goflags.Usage = Usage
+	goflags.Preserve = true
+	err = goflags.Parse(config)
 	if err != nil {
 		return
 	}
@@ -121,7 +121,7 @@ func PrintDefaults() {
 // DefaultUsage is assigned for Usage function by default
 func DefaultUsage() {
 	fmt.Println("Usage")
-	goFlags.PrintDefaults()
-	goEnv.PrintDefaults()
+	goflags.PrintDefaults()
+	goenv.PrintDefaults()
 	PrintDefaults()
 }

@@ -1,12 +1,12 @@
-package goConfig
+package goconfig
 
 import (
 	"errors"
 	"os"
 	"testing"
 
-	"github.com/crgimenes/goConfig/goFlags"
-	"github.com/crgimenes/goConfig/structTag"
+	"github.com/crgimenes/goconfig/goflags"
+	"github.com/crgimenes/goconfig/structtag"
 )
 
 type testStruct struct {
@@ -113,8 +113,8 @@ func TestParse(t *testing.T) {
 
 	Tag = ""
 	err = Parse(s)
-	if err != structTag.ErrUndefinedTag {
-		t.Fatal("Error structTag.ErrUndefinedTag expected")
+	if err != structtag.ErrUndefinedTag {
+		t.Fatal("Error structtag.ErrUndefinedTag expected")
 	}
 
 	Tag = "cfg"
@@ -125,7 +125,7 @@ func TestParse(t *testing.T) {
 
 	os.Setenv("A", "900ERROR")
 
-	goFlags.Reset()
+	goflags.Reset()
 	err = Parse(s)
 	if err == nil {
 		t.Fatal("Error expected")
@@ -136,20 +136,20 @@ func TestParse(t *testing.T) {
 		t.Fatal(err)
 	}
 
-	goFlags.Reset()
+	goflags.Reset()
 	err = Parse(s)
 	if err != nil {
 		t.Fatal(err)
 	}
 
 	s1 := "test"
-	goFlags.Reset()
+	goflags.Reset()
 	err = Parse(s1)
 	if err == nil {
 		t.Fatal("Error expected")
 	}
 
-	goFlags.Reset()
+	goflags.Reset()
 	err = Parse(&s1)
 	if err == nil {
 		t.Fatal("Error expected")

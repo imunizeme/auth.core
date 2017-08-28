@@ -1,4 +1,4 @@
-package goFlags
+package goflags
 
 import (
 	"fmt"
@@ -9,7 +9,7 @@ import (
 
 	"flag"
 
-	"github.com/crgimenes/goConfig/structTag"
+	"github.com/crgimenes/goconfig/structtag"
 )
 
 type parameterMeta struct {
@@ -37,25 +37,25 @@ func Setup(tag string, tagDefault string) {
 	parametersMetaMap = make(map[*reflect.Value]parameterMeta)
 	visitedMap = make(map[string]*flag.Flag)
 
-	structTag.Setup()
-	structTag.Prefix = Prefix
+	structtag.Setup()
+	structtag.Prefix = Prefix
 	SetTag(tag)
 	SetTagDefault(tagDefault)
 
-	structTag.ParseMap[reflect.Int] = reflectInt
-	structTag.ParseMap[reflect.Float64] = reflectFloat
-	structTag.ParseMap[reflect.String] = reflectString
-	structTag.ParseMap[reflect.Bool] = reflectBool
+	structtag.ParseMap[reflect.Int] = reflectInt
+	structtag.ParseMap[reflect.Float64] = reflectFloat
+	structtag.ParseMap[reflect.String] = reflectString
+	structtag.ParseMap[reflect.Bool] = reflectBool
 }
 
 // SetTag set a new tag
 func SetTag(tag string) {
-	structTag.Tag = tag
+	structtag.Tag = tag
 }
 
 // SetTagDefault set a new TagDefault to retorn default values
 func SetTagDefault(tag string) {
-	structTag.TagDefault = tag
+	structtag.TagDefault = tag
 }
 
 // Parse configuration
@@ -65,7 +65,7 @@ func Parse(config interface{}) (err error) {
 	}
 
 	flag.Usage = Usage
-	err = structTag.Parse(config, "")
+	err = structtag.Parse(config, "")
 	if err != nil {
 		return
 	}
@@ -105,8 +105,8 @@ func Reset() {
 	flag.CommandLine = flag.NewFlagSet(os.Args[0], flag.ContinueOnError)
 	flag.Usage = nil
 
-	structTag.Reset()
-	Setup(structTag.Tag, structTag.TagDefault)
+	structtag.Reset()
+	Setup(structtag.Tag, structtag.TagDefault)
 }
 
 func loadVisit(f *flag.Flag) {
@@ -118,7 +118,7 @@ func reflectInt(field *reflect.StructField, value *reflect.Value, tag string) (e
 	var defaltValue string
 	var defaltValueInt int
 
-	defaltValue = field.Tag.Get(structTag.TagDefault)
+	defaltValue = field.Tag.Get(structtag.TagDefault)
 
 	if defaltValue == "" || defaltValue == "0" {
 		defaltValueInt = 0
@@ -147,7 +147,7 @@ func reflectFloat(field *reflect.StructField, value *reflect.Value, tag string) 
 	var defaltValue string
 	var defaltValueFloat float64
 
-	defaltValue = field.Tag.Get(structTag.TagDefault)
+	defaltValue = field.Tag.Get(structtag.TagDefault)
 
 	if defaltValue == "" || defaltValue == "0" {
 		defaltValueFloat = 0
@@ -173,7 +173,7 @@ func reflectString(field *reflect.StructField, value *reflect.Value, tag string)
 
 	var aux string
 	var defaltValue string
-	defaltValue = field.Tag.Get(structTag.TagDefault)
+	defaltValue = field.Tag.Get(structtag.TagDefault)
 
 	meta := parameterMeta{}
 	meta.Value = &aux
@@ -192,7 +192,7 @@ func reflectBool(field *reflect.StructField, value *reflect.Value, tag string) (
 
 	var aux bool
 	var defaltValue bool
-	defaltTag := field.Tag.Get(structTag.TagDefault)
+	defaltTag := field.Tag.Get(structtag.TagDefault)
 	defaltValue = defaltTag == "true" || defaltTag == "t"
 
 	meta := parameterMeta{}
