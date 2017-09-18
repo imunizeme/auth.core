@@ -49,7 +49,7 @@ func Authenticate(email, password string) (user LoggedUser, err error) {
 	if sc.Err() != nil {
 		return
 	}
-	err = sc.Scan(&user)
+	_, err = sc.Scan(&user)
 	return
 }
 
