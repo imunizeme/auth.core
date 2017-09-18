@@ -11,7 +11,7 @@
   branch = "master"
   name = "github.com/crgimenes/goconfig"
   packages = [".","goenv","goflags","structtag","toml"]
-  revision = "95c702640de75e6c04975f8119e8ae45c21635ce"
+  revision = "59b224ccd6d9914b6f79666b2db8d5e86c6c2b23"
 
 [[projects]]
   name = "github.com/dgrijalva/jwt-go"

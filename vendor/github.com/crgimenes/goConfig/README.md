@@ -7,7 +7,7 @@
 [![MIT Licensed](https://img.shields.io/badge/license-MIT-green.svg)](https://tldrlegal.com/license/mit-license)
 
 
-goconfig uses a struct as input and populates the fields of this struct with parameters fom command line, environment variables and configuration file.
+goconfig uses a struct as input and populates the fields of this struct with parameters from command line, environment variables and configuration file.
 
 ## Install
 
